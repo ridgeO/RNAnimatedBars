@@ -20,6 +20,21 @@ export default class AnimatedBars extends Component {
     };
   }
 
+  componentDidMount() {
+    this.generateData();
+  }
+
+  generateData = () => {
+    const data = [];
+    for (let i = 0; i < 10; i++) {
+      data.push(Math.floor(Math.random() * window.width));
+    }
+
+    this.setState({
+      data,
+    });
+  }
+
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: '#F5FCFF', justifyContent: 'center'}}>
