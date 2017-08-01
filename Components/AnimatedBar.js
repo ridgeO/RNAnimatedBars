@@ -13,10 +13,13 @@ class AnimatedBar extends Component {
   }
 
   componentDidMount() {
-    const { value } = this.props;
-    Animated.timing(this._width, {
-      toValue: value,
-    }).start();
+    const { delay, value } = this.props;
+    Animated.sequence([
+      Animated.delay(delay),
+      Animated.timing(this._width, {
+        toValue: value,
+      }),
+    ]).start();
   }
 
   render() {
