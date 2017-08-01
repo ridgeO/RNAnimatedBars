@@ -22,6 +22,13 @@ export default class AnimatedBars extends Component {
 
   componentDidMount() {
     this.generateData();
+    this.interval = setInterval(() => {
+      this.generateData();
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   generateData = () => {
