@@ -6,16 +6,24 @@ class AnimatedBar extends Component {
 
   constructor(props) {
     super(props);
+    this._width = new Animated.Value(0);
     this.state = {
       color: randomcolor(),
     };
+  }
+
+  componentDidMount() {
+    const { value } = this.props;
+    Animated.timing(this._width, {
+      toValue: value,
+    }).start();
   }
 
   render() {
     const barStyles = {
       backgroundColor: this.state.color,
       height: 40,
-      width: this.props.value,
+      width: this._width,
       borderTopRightRadius: 4,
       borderBottomRightRadius: 4,
     };
